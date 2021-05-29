@@ -4,7 +4,7 @@ from pygame.locals import *
 from sys import exit
 pygame.init()
 screen = pygame.display.set_mode((300, 400), 0, 32)
-pygame.display.set_caption("PyMasterMind!")
+pygame.display.set_caption("pyMastermind!")
 random_color = (randint(0,255), randint(0,255), randint(0,255))
 font = pygame.font.SysFont("arial", 12);
 screen.fill((208,208,208))
@@ -255,22 +255,24 @@ while True:
                     if not win and len(attempts) > 9:
                         print_master()
                         text_surface = my_font.render("No Victory", True, (0,0,0), (255, 255, 255))
-                        screen.blit(text_surface, (45, 75))
+                        screen.blit(text_surface, (45, 85))
                     elif win:
                         print_master()
                         text_surface = my_font.render("VICTORY!!!", True, (0,0,0), (255, 255, 255))
-                        screen.blit(text_surface, (35, 75))
-                pygame.draw.rect(screen, (208,208,208), Rect(235,250,15,15))
+                        screen.blit(text_surface, (35, 85))
+                pygame.draw.rect(screen, (208,208,208), Rect(225,250,15,15))
                 text_surface_guess = my_font.render("Current Guess:", True, (0,0,0), (255, 255, 255))
-                screen.blit(text_surface_guess, (155, 275))
+                screen.blit(text_surface_guess, (145, 275))
                 pygame.display.flip()  #update display
-
-
-            pygame.draw.rect(screen, (0,0,0), Rect(235,250,15,15))
+            pygame.draw.rect(screen, (0,0,0), Rect(225,250,15,15))
             if color_select <> []:
-                pygame.draw.ellipse(screen,code_list[color_select],(235,250,15,15))
+                pygame.draw.ellipse(screen,code_list[color_select],(225,250,15,15))
             text_surface = my_font.render("Color Selected:", True, (0,0,0), (255, 255, 255))
-            screen.blit(text_surface, (155, 250))
+            screen.blit(text_surface, (145, 250))
+        black_color_means = my_font.render("Black means right color in right spot", True, (0,0,0), (255, 255, 255))
+        white_color_means = my_font.render("White means right color in wrong spot", True, (0,0,0), (255, 255, 255))
+        screen.blit(black_color_means, (100, 45))
+        screen.blit(white_color_means, (100, 65))            
         screen.blit(mastmind_text, (20,20))
         screen.blit(gobut.image,gobut.rect)
         gobut.popup()
